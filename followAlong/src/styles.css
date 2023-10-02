@@ -25,6 +25,7 @@ h1 {
 fieldset {
   border: none;
   display: flex;
+  flex-direction: column;
 }
 
 .form {
@@ -44,4 +45,14 @@ legend {
 .flexer {
   display: flex;
   justify-content: space-between;
+  align-items: center;
+  margin-top: .5em;
+}
+.form-input {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 2em;
+  margin-bottom: 1em;
+
 }

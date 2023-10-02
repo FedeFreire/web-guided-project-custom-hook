@@ -1,55 +1,66 @@
 import React, { useState } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import TextField from "@material-ui/core/TextField";
+import useForm from "./hooks/useForm";
 
 import Button from "../theme/Button";
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles((theme) => ({
   container: {
     display: "flex",
-    flexWrap: "wrap"
+    flexWrap: "wrap",
   },
   textField: {
     marginLeft: theme.spacing(1),
-    marginRight: theme.spacing(1)
+    marginRight: theme.spacing(1),
   },
   dense: {
-    marginTop: theme.spacing(2)
+    marginTop: theme.spacing(2),
   },
   menu: {
-    width: 200
-  }
+    width: 200,
+  },
 }));
+
+const initialValue = {
+  username: "",
+  email: "",
+};
 
 export default function SignupForm() {
   const classes = useStyles();
-  const [firstName, setFirstName] = useState("");
-
-  const handleChanges = e => {
-    setFirstName(e.target.value);
+  const callBack = () => {
+    alert(`${values.username}, ${values.email}`);
   };
+  const [values, clearForm, handleChanges, handleSubmit] =
+    useForm('sign-in',initialValue, callBack);
 
-  const handleSubmit = e => {
-    e.preventDefault();
-    alert(firstName);
-  };
-
-  const clearForm = e => {
-    e.preventDefault();
-    setFirstName("");
-  };
+  
 
   return (
     <div p={2} className="form">
       <form onSubmit={handleSubmit}>
         <fieldset>
+          <div className="form-header">
           <legend>Add New Client</legend>
+          </div>
+          <div className="form-input">
           <TextField
             id="outlined-name"
-            label="First Name"
+            label="User Name"
             className={classes.textField}
-            name="firstName"
-            value={firstName}
+            name="username"
+            value={values.username}
+            onChange={handleChanges}
+            margin="normal"
+            variant="outlined"
+          />
+          <TextField
+            id="outlined-email"
+            label="email"
+            className={classes.textField}
+            name="email"
+            value={values.email}
             onChange={handleChanges}
             margin="normal"
             variant="outlined"
@@ -61,6 +72,7 @@ export default function SignupForm() {
             <Button color="blue" type="submit">
               Submit
             </Button>
+          </div>
           </div>
         </fieldset>
       </form>
