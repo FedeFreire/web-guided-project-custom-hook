@@ -32,47 +32,48 @@ export default function SignupForm() {
   const callBack = () => {
     alert(`${values.username}, ${values.email}`);
   };
-  const [values, clearForm, handleChanges, handleSubmit] =
-    useForm('sign-in',initialValue, callBack);
-
-  
+  const [values, clearForm, handleChanges, handleSubmit] = useForm(
+    "sign-in",
+    initialValue,
+    callBack
+  );
 
   return (
     <div p={2} className="form">
       <form onSubmit={handleSubmit}>
         <fieldset>
           <div className="form-header">
-          <legend>Add New Client</legend>
+            <legend>Add New Client</legend>
           </div>
           <div className="form-input">
-          <TextField
-            id="outlined-name"
-            label="User Name"
-            className={classes.textField}
-            name="username"
-            value={values.username}
-            onChange={handleChanges}
-            margin="normal"
-            variant="outlined"
-          />
-          <TextField
-            id="outlined-email"
-            label="email"
-            className={classes.textField}
-            name="email"
-            value={values.email}
-            onChange={handleChanges}
-            margin="normal"
-            variant="outlined"
-          />
-          <div className="flexer">
-            <Button color="red" onClick={clearForm}>
-              Clear
-            </Button>
-            <Button color="blue" type="submit">
-              Submit
-            </Button>
-          </div>
+            <TextField
+              id="outlined-name"
+              label="User Name"
+              className={classes.textField}
+              name="username"
+              value={values.username}
+              onChange={handleChanges}
+              margin="normal"
+              variant="outlined"
+            />
+            <TextField
+              id="outlined-email"
+              label="email"
+              className={classes.textField}
+              name="email"
+              value={values.email}
+              onChange={handleChanges}
+              margin="normal"
+              variant="outlined"
+            />
+            <div className="flexer">
+              <Button color="red" onClick={clearForm}>
+                Clear
+              </Button>
+              <Button color="blue" type="submit">
+                Submit
+              </Button>
+            </div>
           </div>
         </fieldset>
       </form>

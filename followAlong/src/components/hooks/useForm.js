@@ -1,12 +1,12 @@
 import useLocalStorage from "./useLocalStorage";
 
-export default function useForm(key,initialValue,cb) {
-const [values, setValue] = useLocalStorage(key,initialValue);
+export default function useForm(key, initialValue, cb) {
+  const [values, setValue] = useLocalStorage(key, initialValue);
 
   const clearForm = () => {
     setValue(initialValue);
   };
-  const handleSubmit = e => {
+  const handleSubmit = (e) => {
     e.preventDefault();
     cb();
   };
@@ -14,5 +14,5 @@ const [values, setValue] = useLocalStorage(key,initialValue);
   const handleChanges = (e) => {
     setValue({ ...values, [e.target.name]: e.target.value });
   };
-  return [values,clearForm,handleChanges,handleSubmit];
-};
+  return [values, clearForm, handleChanges, handleSubmit];
+}
